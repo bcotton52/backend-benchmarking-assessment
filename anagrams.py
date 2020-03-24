@@ -12,7 +12,7 @@ import sys
 
 # Your name here, and any other people/sources who helped.
 # Give credit where credit is due.
-__author__ = "???"
+__author__ = "Qu33nB"
 
 
 def alphabetize(string):
@@ -27,12 +27,22 @@ def find_anagrams(words):
     Example:
     {'dgo': ['dog'], 'act': ['cat', 'act']}
     """
-    anagrams = {
-        alphabetize(word): [
-            w for w in words
-            if alphabetize(w) == alphabetize(word)]
-        for word in words}
+    anagrams = {}
+    for word in words:
+        a_word = alphabetize(word)
+        if a_word not in anagrams:
+            # anagrams = {
+            anagrams[a_word] = [
+                w for w in words if len(w) == len(word)
+                if alphabetize(w) == a_word]
+        # for word in words}
     return anagrams
+    # anagrams = {
+    #     alphabetize(word): [
+    #         w for w in words
+    #         if alphabetize(w) == alphabetize(word)]
+    #     for word in words}
+    # return anagrams
 
 
 def main(args):
